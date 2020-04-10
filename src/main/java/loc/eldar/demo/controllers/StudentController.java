@@ -1,10 +1,13 @@
 package loc.eldar.demo.controllers;
 
+import loc.eldar.demo.exception.ApiRequestException;
 import loc.eldar.demo.models.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import loc.eldar.demo.models.StudentCourse;
+import loc.eldar.demo.services.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,11 +15,25 @@ import java.util.UUID;
 @RequestMapping("students")
 public class StudentController {
 
+    private final StudentService studentService;
+
+    @Autowired
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
     @GetMapping
     public List<Student> getAllStudents() {
-        return List.of(
-                new Student(UUID.randomUUID(), "First", "User", "test1@test.com", Student.Gender.MALE),
-                new Student(UUID.randomUUID(), "Second", "User", "test2@test.com", Student.Gender.FEMALE)
-        );
+        return studentService.getAllStudents();
+    }
+
+    @PostMapping
+    public void addNewStudent(@RequestBody @Valid Student student) {
+        studentService.addNewStudent(student);
+    }
+
+    @GetMapping(path = "{studentId}/courses")
+    public List<StudentCourse> getAllCoursesForStudent(@PathVariable("studentId") UUID studentId) {
+        return studentService.getAllCoursesForStudent(studentId);
     }
 }

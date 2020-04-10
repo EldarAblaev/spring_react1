@@ -1,13 +1,31 @@
 package loc.eldar.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class Student {
 
+    @JsonProperty("studentId")
     private final UUID studentId;
+
+    @JsonProperty("firstName")
+    @NotBlank
     private final String firstName;
+
+    @JsonProperty("lastName")
+    @NotBlank
     private final String lastName;
+
+    @JsonProperty("email")
+    @Email
     private final String email;
+
+    @JsonProperty("gender")
+    @NotNull
     private final Gender gender;
 
     public Student(UUID studentId, String firstName, String lastName, String email, Gender gender) {
@@ -40,5 +58,16 @@ public class Student {
 
     public Gender getGender() {
         return gender;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", gender=" + gender +
+                '}';
     }
 }
