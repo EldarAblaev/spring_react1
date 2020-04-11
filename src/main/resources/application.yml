@@ -1,10 +1,24 @@
+#spring:
+#  profiles:
+#    active: @spring.profiles.active@
+#
+#app:
+#  datasource:
+#    jdbc-url: jdbc:postgresql://localhost:5432/spring_react1
+#    username: postgres
+#    password: password
+#    pool-size: 30
+
 spring:
   profiles:
     active: @spring.profiles.active@
 
+server:
+  port: 5000
+
 app:
   datasource:
-    jdbc-url: jdbc:postgresql://localhost:5432/spring_react1
-    username: postgres
-    password: password
+    jdbc-url: jdbc:postgresql://ec2-54-247-125-38.eu-west-1.compute.amazonaws.com:5432/ddcjfjhugb21di
+    username: yyzemqqxbaqtpa
+    password: deb5c4c5fd064c8b7fac33209173aa5085675f002250f14514378b858d6cb1f1
     pool-size: 30
