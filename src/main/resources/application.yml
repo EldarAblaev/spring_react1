@@ -18,7 +18,7 @@ server:
 
 app:
   datasource:
-    jdbc-url: jdbc:postgresql://ec2-54-247-125-38.eu-west-1.compute.amazonaws.com:5432/ddcjfjhugb21di
-    username: yyzemqqxbaqtpa
-    password: deb5c4c5fd064c8b7fac33209173aa5085675f002250f14514378b858d6cb1f1
+    jdbc-url: jdbc:postgresql://ec2-54-75-231-215.eu-west-1.compute.amazonaws.com:5432/dd1r5229mjn6ag
+    username: zqdmilfnkidigp
+    password: a20a036e4b0ff405ddc8fe8ac2a96cab424fd847838a40352801b00eccd892be
     pool-size: 30
